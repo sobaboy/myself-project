@@ -1,12 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>교보문고</title>
+<title>LE-ACE</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="https://t1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/1ZpP/image/bND2mlasnwQuy7DiP9IyC_XIT1U.jpg">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
-<body>
-    aaaa
-</body>
-</html>
+<body class=></body>
+
+<!-- Sidebar/menu -->
+<nav class="sidebar">
+  <div class="w3-container w3-display-container w3-padding-16">
+    
+    <h3>9900원에 </h3>
+    <h4>당신의</h4>
+    <h5>아이디어를</h5>
+    <h6>대여하세요</h6>
+    <hr>
+        
+        
+        <p><label for="date">대여희망날짜</label></p>
+        <input type="date" class="leace-date" name="leace-date"
+        value="2022-07-01"min="2022-07-01" max="2022-07-31">
+        <p><label><i class="leace-amount"></i>사용희망시간(h)</label></p>
+        <input class="leace-amount" type="number" value="1" name="Adults" min="1" max="6"> 
+        <p><label><i class="leace-amount"></i>사용인원(명)</label></p>
+        <input class="leace-amount" type="number" value="1" name="Adults" min="1" max="6"> 
+        <p><label for="leace-purpose">사용목적</label>
+        </p>
+        <select name="purpose" class="using-purpose">
+            <option value="">
+                사용목적이 무엇인가요?
+            </option>
+            <option value="vocal">보컬연습</option>
+            <option value="recording">레코딩</option>
+            <option value="Inst">악기연주</option>
+        </select>  
+
+        
+     
+
+      <p><button class="search" type="submit"><i class="search"></i>사용가능한 룸 찾기</button></p> 
+       
+
+
+      <!-- <p><label><i class="leace-date"></i>날짜</label></p>
+      <input class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="CheckIn" required>   
+             
+      <p><label><i class="leace-hour"></i>사용시간</label></p>
+      <input class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="CheckOut" required>         
+      <p><label><i class="leace-amount"></i>사용인원</label></p>
+      <input class="w3-input w3-border" type="number" value="1" name="Adults" min="1" max="6">              
+      <p><label><i class="leace-purpose"></i> 사용목적</label></p>
+      <input class="w3-input w3-border" type="number" value="0" name="Kids" min="0" max="6">
+      
+    </form>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#apartment" class="w3-bar-item w3-button w3-padding-16"><i class="fa fa-building"></i> 찾아오시는 길</a>
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-16" onclick="document.getElementById('subscribe').style.display='block'"><i class="fa fa-rss"></i>인스타그램</a>
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-16"><i class="fa fa-envelope"></i> Contact</a>
+  </div>
+</nav>
