@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./css/index.css">
   <link rel="stylesheet" href="./css/body.css">
+ 
+  
 </head>
 
 <!-- searcing bar -->
@@ -23,22 +25,48 @@
   </div>
 
 <!--  -->
-
+<head>
+  <style>
+    .container {
+      width: 250px;
+      height: 140px;
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim modi in
+    exercitationem explicabo, at rem officia autem non porro soluta dolorum
+    officiis ipsa repellat, laudantium ea unde labore, temporibus quas?Lorem
+    ipsum dolor sit amet, consectetur adipisicing elit. Eveniet eius totam
+    quam pariatur ratione, in voluptatem dignissimos laboriosam sint aut!
+    Repudiandae consectetur odit quo corrupti quidem perferendis aut dolores
+    quis?Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat nam
+    optio dolore recusandae fuga voluptatibus. Ea quam deserunt consectetur
+    quo aut eligendi, molestiae incidunt molestias ullam? Repellendus ratione
+    repellat
+  </div>
+</body>
 <!-- navbar -->
 <div class="banner">
   <div class="navbar">
       <img src=https://dogpre-upload.s3.ap-northeast-2.amazonaws.com/web/main_category/dog_food/ic_categories_senior_dog.svg alt="img" class="logo">
-      <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">병원소개</a></li>
-          <li><a href="#">강남점</a></li>
-          <li><a href="#">동수원점</a></li>
-          <li><a href="#">세종점</a></li>
-          <li><a href="#">종로점</a></li>
-          <li><a href="#">금천구청점</a></li>
-      </ul>
+      
+      <div class="nav">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">병원소개</a></li>
+            <li><a href="#">강남점</a></li>
+            <li><a href="#">동수원점</a></li>
+            <li><a href="#">세종점</a></li>
+            <li><a href="#">종로점</a></li>
+            <li><a href="#">금천구청점</a></li>
+        </ul>
+      </div>
   </div>
   <div class="content">
+    <div class="mindset">
       <h1>"진심어린 사랑과 정성으로 돌보겠습니다"</h1>
       <h2>내과/영상/외과/응급 각분야에 특화된 최상의 의료진</h2>
       <div>
@@ -46,7 +74,76 @@
       
           <button type="button"><span></span>지점정보</button>
       </div>
-      
+    </div>
+<h1>Reservation for </h1>
+<form>
+	<fieldset>
+		<legend>Personal data</legend>
+		<div class="double-input">
+			<div class="form-input-container">
+				<label for="fname">First name</label>
+				<input type="text" name="firstname" id="fname" placeholder="Jan" minlength="3" required/>
+			</div>
+			<div class="form-input-container">
+				<label for="lname">Last name</label>
+				<input type="text" name="lastname" id="lname" placeholder="Kowalski" required/>
+			</div>
+		</div>
+		<div class="double-input">
+			<div class="form-input-container">
+				<label for="email">Email</label>
+				<input type="email" name="email" id="email" required placeholder="jan.kowalski@gmail.com" required/>
+			</div>
+			<div class="form-input-container">
+				<label for="phone">Phone</label>
+				<input type="tel" name="phone" id="phone" placeholder="213 742 069" required/>
+			</div>
+		</div>
+	</fieldset>
+		<fieldset>
+		<legend>Room details</legend>
+		<div class="double-input">
+			<div class="form-input-container">
+				<label for="hotelcity">City</label>
+				<select name="hotelcity" id="hotelcity">
+					<option value="Wroclaw">Wroclaw</option>
+					<option value="Warsaw">Warsaw</option>
+					<option value="Plock">Plock</option>
+					<option value="Krakow">Krakow</option>
+				</select>
+			</div>
+			<div class="form-input-container">
+				<label for="capacity">For (capacity)</label>
+				<input type="number" name="capacity" id="capacity" value="1" min="1" max="10" step="1" />
+			</div>
+		</div>
+		<div class="double-input">
+			<div class="form-input-container date-select">
+				<label for="startdate">Start date</label>
+				<select name="start-date-day" id="start-date-day">
+					<option value="Day" disabled selected>Day</option>
+					<option value="1">1</option>
+				</select>
+				<select name="start-date-month" id="start-date-month">
+					<option value="Month" disabled selected>Month</option>
+					<option value="1">01</option>
+				</select>
+			</div>
+			<div class="form-input-container date-select">
+				<label for="enddate">End date</label>
+				<select name="end-date-day" id="end-date-day">
+					<option value="Day" disabled selected>Day</option>
+					<option value="1">1</option>
+				</select>
+				<select name="end-date-month" id="end-date-month">
+					<option value="Month" disabled selected>Month</option>
+					<option value="1">01</option>
+				</select>
+			</div>
+		</div>
+	</fieldset>
+	<button type="submit">Submit a request</button>
+</form>
 
 
 </header>
