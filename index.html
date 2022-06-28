@@ -1,43 +1,144 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>LE-ACE</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" href="https://t1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/1ZpP/image/bND2mlasnwQuy7DiP9IyC_XIT1U.jpg">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<head>
+  <title>돌봄</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon"
+    href="https://logopond.com/logos/69f0573da9c128ad2bbf3785036e97d1.png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/body.css">
 </head>
-<body class=></body>
+
+<!-- searcing bar -->
+<header>
+  <div id="wrap">
+    <form action="" autocomplete="on">
+      <input id="search" name="search" type="text" placeholder="What're we looking for ?"><input id="search_submit"
+        value="Rechercher" type="submit">
+    </form>
+  </div>
+
+<!--  -->
+
+<!-- navbar -->
+<div class="banner">
+  <div class="navbar">
+      <img src=https://dogpre-upload.s3.ap-northeast-2.amazonaws.com/web/main_category/dog_food/ic_categories_senior_dog.svg alt="img" class="logo">
+      <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">병원소개</a></li>
+          <li><a href="#">강남점</a></li>
+          <li><a href="#">동수원점</a></li>
+          <li><a href="#">세종점</a></li>
+          <li><a href="#">종로점</a></li>
+          <li><a href="#">금천구청점</a></li>
+      </ul>
+  </div>
+  <div class="content">
+      <h1>"진심어린 사랑과 정성으로 돌보겠습니다"</h1>
+      <h2>내과/영상/외과/응급 각분야에 특화된 최상의 의료진</h2>
+      <div>
+          <button type="button"><span></span>진료예약</button>
+      
+          <button type="button"><span></span>지점정보</button>
+      </div>
+      
+
+
+</header>
+
+<body>
+  
+  
+
+  <!-- Footer -->
+  <footer class="section teal darken-2 white-text center">
+    <p class="flow-text">Travelville &copy; 2018</p>
+  </footer>
+
+</body>
+
+
+
 
 <!-- Sidebar/menu -->
-<nav class="sidebar">
+
+<!-- <nav class="sidebar">
   <div class="w3-container w3-display-container w3-padding-16">
-    
+
     <h3>9900원에 </h3>
     <h4>당신의</h4>
     <h5>아이디어를</h5>
     <h6>대여하세요</h6>
     <hr>
-        
-        
-        <p><label for="date">대여희망날짜</label></p>
-        <input type="date" class="leace-date" name="leace-date"
-        value="2022-07-01"min="2022-07-01" max="2022-07-31">
-        <p><label><i class="leace-amount"></i>사용희망시간(h)</label></p>
-        <input class="leace-amount" type="number" value="1" name="Adults" min="1" max="6"> 
-        <p><label><i class="leace-amount"></i>사용인원(명)</label></p>
-        <input class="leace-amount" type="number" value="1" name="Adults" min="1" max="6"> 
-        <p><label for="leace-purpose">사용목적</label>
-        </p>
-        <select name="purpose" class="using-purpose">
-            <option value="">
-                사용목적이 무엇인가요?
-            </option>
-            <option value="vocal">보컬연습</option>
-            <option value="recording">레코딩</option>
-            <option value="Inst">악기연주</option>
-        </select> 
-      <p><button class="search" type="submit"><i class="search"></i>사용가능한 룸 찾기</button></p> 
-       
+
+
+    <p><label for="date">대여희망날짜</label></p>
+    <input type="date" class="leace-date" name="leace-date" value="2022-07-01" min="2022-07-01" max="2022-07-31">
+    <p><label><i class="leace-amount"></i>사용희망시간(h)</label></p>
+    <input class="leace-amount" type="number" value="1" name="Adults" min="1" max="6">
+    <p><label><i class="leace-amount"></i>사용인원(명)</label></p>
+    <input class="leace-amount" type="number" value="1" name="Adults" min="1" max="6">
+    <p><label for="leace-purpose">사용목적</label>
+    </p>
+    <select name="purpose" class="using-purpose">
+      <option value="">
+        사용목적이 무엇인가요?
+      </option>
+      <option value="vocal">보컬연습</option>
+      <option value="recording">레코딩</option>
+      <option value="Inst">악기연주</option>
+    </select>
+    <p><button class="search" type="submit"><i class="search"></i>사용가능한 룸 찾기</button></p>
+
+
+    <form action="reservation.php" method="post">
+      <div class="elem-group">
+        <label for="name">name</label>
+        <input type="text" id="name" name="visitor_name" placeholder="name" pattern=[A-Z\sa-z]{3,20} required>
+      </div>
+      <div class="elem-group">
+        <label for="email">e-mail</label>
+        <input type="email" id="email" name="visitor_email" placeholder="1234hso@gmail.com" required>
+      </div>
+      <div class="elem-group">
+        <l for="phone">ㅎㄷㅍㅂㅎ</label>
+          <input type="tel" id="phone" name="visitor_phone" placeholder="010-3487-3872"
+            pattern=(\d{3})-?\s?(\d{3})-?\s?(\d{4}) required>
+      </div>
+      <hr>
+      <div class="elem-group inlined">
+        <label for="adult">Adults</label>
+        <input type="number" id="adult" name="total_adults" placeholder="2" min="1" required>
+      </div>
+      <div class="elem-group inlined">
+        <label for="child">Children</label>
+        <input type="number" id="child" name="total_children" placeholder="2" min="0" required>
+      </div>
+      <div class="elem-group inlined">
+        <label for="checkin-date">Check-in Date</label>
+        <input type="date" id="checkin-date" name="checkin" required>
+      </div>
+      <div class="elem-group inlined">
+        <label for="checkout-date">Check-out Date</label>
+        <input type="date" id="checkout-date" name="checkout" required>
+      </div>
+      <div class="elem-group">
+        <label for="room-selection">Select Room Preference</label>
+        <select id="room-selection" name="room_preference" required>
+          <option value="">Choose a Room from the List</option>
+          <option value="connecting">single room</option>
+          <option value="adjoining">double roon</option>
+          <option value="adjacent">event room</option>
+        </select>
+      </div>
+      <hr>
+      <div class="elem-group">
+        <label for="message">Anything Else?</label>
+        <textarea id="message" name="visitor_message" placeholder="Tell us anything else that might be important."
+          required></textarea>
+      </div> -->
