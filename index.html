@@ -11,11 +11,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./css/index.css">
   <link rel="stylesheet" href="./css/body.css">
- 
-  
 </head>
 
-<!-- searcing bar -->
+<!-- searching bar -->
 <header>
   <div id="wrap">
     <form action="" autocomplete="on">
@@ -23,31 +21,25 @@
         value="Rechercher" type="submit">
     </form>
   </div>
+</header>
 
-<!--  -->
+
 <head>
   <style>
     .container {
-      width: 250px;
-      height: 140px;
+      width: 1000px;
+      height: 1000;
       overflow: auto;
     }
   </style>
 </head>
+
+
+
 <body>
-  <div class="container">
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim modi in
-    exercitationem explicabo, at rem officia autem non porro soluta dolorum
-    officiis ipsa repellat, laudantium ea unde labore, temporibus quas?Lorem
-    ipsum dolor sit amet, consectetur adipisicing elit. Eveniet eius totam
-    quam pariatur ratione, in voluptatem dignissimos laboriosam sint aut!
-    Repudiandae consectetur odit quo corrupti quidem perferendis aut dolores
-    quis?Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat nam
-    optio dolore recusandae fuga voluptatibus. Ea quam deserunt consectetur
-    quo aut eligendi, molestiae incidunt molestias ullam? Repellendus ratione
-    repellat
-  </div>
 </body>
+
+
 <!-- navbar -->
 <div class="banner">
   <div class="navbar">
@@ -75,20 +67,23 @@
           <button type="button"><span></span>지점정보</button>
       </div>
     </div>
-<h1>Reservation for </h1>
-<form>
-	<fieldset>
-		<legend>Personal data</legend>
-		<div class="double-input">
-			<div class="form-input-container">
-				<label for="fname">First name</label>
-				<input type="text" name="firstname" id="fname" placeholder="Jan" minlength="3" required/>
-			</div>
-			<div class="form-input-container">
-				<label for="lname">Last name</label>
-				<input type="text" name="lastname" id="lname" placeholder="Kowalski" required/>
-			</div>
-		</div>
+
+      <!-- reservation form -->
+<!-- 
+<div class="form">
+  <h1>Reservation for </h1>
+	  <fieldset>
+		  <legend>Personal data</legend>
+		  <div class="double-input">
+		  	<div class="form-input-container">
+		  		<label for="fname">First name</label>
+		  		<input type="text" name="firstname" id="fname" placeholder="Jan" minlength="3" required/>
+		  	</div>
+		  	<div class="form-input-container">
+		  		<label for="lname">Last name</label>
+		  		<input type="text" name="lastname" id="lname" placeholder="Kowalski" required/>
+		  	</div>
+		  </div>
 		<div class="double-input">
 			<div class="form-input-container">
 				<label for="email">Email</label>
@@ -97,67 +92,28 @@
 			<div class="form-input-container">
 				<label for="phone">Phone</label>
 				<input type="tel" name="phone" id="phone" placeholder="213 742 069" required/>
+        <button type="submit">Submit a request</button>
 			</div>
-		</div>
+	</div>
 	</fieldset>
-		<fieldset>
-		<legend>Room details</legend>
-		<div class="double-input">
-			<div class="form-input-container">
-				<label for="hotelcity">City</label>
-				<select name="hotelcity" id="hotelcity">
-					<option value="Wroclaw">Wroclaw</option>
-					<option value="Warsaw">Warsaw</option>
-					<option value="Plock">Plock</option>
-					<option value="Krakow">Krakow</option>
-				</select>
-			</div>
-			<div class="form-input-container">
-				<label for="capacity">For (capacity)</label>
-				<input type="number" name="capacity" id="capacity" value="1" min="1" max="10" step="1" />
-			</div>
-		</div>
-		<div class="double-input">
-			<div class="form-input-container date-select">
-				<label for="startdate">Start date</label>
-				<select name="start-date-day" id="start-date-day">
-					<option value="Day" disabled selected>Day</option>
-					<option value="1">1</option>
-				</select>
-				<select name="start-date-month" id="start-date-month">
-					<option value="Month" disabled selected>Month</option>
-					<option value="1">01</option>
-				</select>
-			</div>
-			<div class="form-input-container date-select">
-				<label for="enddate">End date</label>
-				<select name="end-date-day" id="end-date-day">
-					<option value="Day" disabled selected>Day</option>
-					<option value="1">1</option>
-				</select>
-				<select name="end-date-month" id="end-date-month">
-					<option value="Month" disabled selected>Month</option>
-					<option value="1">01</option>
-				</select>
-			</div>
-		</div>
-	</fieldset>
-	<button type="submit">Submit a request</button>
+  </div>
+     
+	</fieldset>	
 </form>
-
+</div>
 
 </header>
 
 <body>
   
-  
+   -->
 
   <!-- Footer -->
-  <footer class="section teal darken-2 white-text center">
+  <!-- <footer class="section teal darken-2 white-text center">
     <p class="flow-text">Travelville &copy; 2018</p>
   </footer>
 
-</body>
+</body> -->
 
 
 
@@ -166,14 +122,11 @@
 
 <!-- <nav class="sidebar">
   <div class="w3-container w3-display-container w3-padding-16">
-
     <h3>9900원에 </h3>
     <h4>당신의</h4>
     <h5>아이디어를</h5>
     <h6>대여하세요</h6>
     <hr>
-
-
     <p><label for="date">대여희망날짜</label></p>
     <input type="date" class="leace-date" name="leace-date" value="2022-07-01" min="2022-07-01" max="2022-07-31">
     <p><label><i class="leace-amount"></i>사용희망시간(h)</label></p>
@@ -191,8 +144,6 @@
       <option value="Inst">악기연주</option>
     </select>
     <p><button class="search" type="submit"><i class="search"></i>사용가능한 룸 찾기</button></p>
-
-
     <form action="reservation.php" method="post">
       <div class="elem-group">
         <label for="name">name</label>
