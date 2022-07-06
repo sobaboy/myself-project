@@ -1,249 +1,133 @@
-/* searching bar */
+@charset "utf-8";
+/* 로봇 PJ CSS - robot.css */
 
-body {
-	background: #DDD;
-	font-size: 15px;
-}
-#wrap {
- /*  margin: 50px 100px; */
-  display: inline-block;
-  position: relative;
-  height: 36px;
-  float: right;
-  padding: 0;
-  position: relative;
+html {
+  scroll-behavior: smooth;
 }
 
-input[type="text"]:focus:hover {
-  border-bottom: 1px solid #BBB;
+/* 공사중표시 */
+body * {
+  /* outline: 2px dashed lime; */
 }
 
-input[type="text"]:focus {
-  width: 700px;
-  z-index: 1;
-  border-bottom: 1px solid #BBB;
-  cursor: text;
-}
-input[type="submit"] {
-  height: 67px;
-  width: 63px;
-  display: inline-block;
-  color:red;
-  float: right;
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADNQTFRFU1NT9fX1lJSUXl5e1dXVfn5+c3Nz6urqv7+/tLS0iYmJqampn5+fysrK39/faWlp////Vi4ZywAAABF0Uk5T/////////////////////wAlrZliAAABLklEQVR42rSWWRbDIAhFHeOUtN3/ags1zaA4cHrKZ8JFRHwoXkwTvwGP1Qo0bYObAPwiLmbNAHBWFBZlD9j0JxflDViIObNHG/Do8PRHTJk0TezAhv7qloK0JJEBh+F8+U/hopIELOWfiZUCDOZD1RADOQKA75oq4cvVkcT+OdHnqqpQCITWAjnWVgGQUWz12lJuGwGoaWgBKzRVBcCypgUkOAoWgBX/L0CmxN40u6xwcIJ1cOzWYDffp3axsQOyvdkXiH9FKRFwPRHYZUaXMgPLeiW7QhbDRciyLXJaKheCuLbiVoqx1DVRyH26yb0hsuoOFEPsoz+BVE0MRlZNjGZcRQyHYkmMp2hBTIzdkzCTc/pLqOnBrk7/yZdAOq/q5NPBH1f7x7fGP4C3AAMAQrhzX9zhcGsAAAAASUVORK5CYII=) center center no-repeat;
-  text-indent: -10000px;
-  border: none;
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 2;
-  /* cursor: pointer; */
-  opacity: 0.4;
-  transition: opacity .4s ease;
-  object-fit: cover;
-}
-input[type="submit"] img{
-  height: 50px;
-}
-
-input[type="submit"]:hover {
-  opacity: 0.8;
-}
-
-
-/* navbar */
-
-* {
+/* 초기화 */
+html,
+body,
+h1,
+h2,
+h3,
+ul,
+ol {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
 }
 
-.banner {
+body {
+  /* height: 3000px; */
+
+  /* 배경: 색이반고윙/크 */
   width: 100%;
-  height: 150vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
-    url(/img/puppy.jpg);
-  background-size: cover;
-  background-position: center;
+  height: 300vh;
+  background: url(../img/puppy_bg.jpg) no-repeat fixed top/cover;
 }
 
-.navbar {
-  width: auto;
-  height: 4.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #fff;
+/* 1. 상단메뉴 */
+
+#container {
+  padding: 50px;
+  position: relative;
+  margin: 0 auto;
+  background-color: white;
 }
 
 .logo {
-  width: 100px;
-  cursor: pointer;
-}
-
-.navbar ul li {
-  list-style: none;
-  display: inline-block;
-  margin: 0 20px;
-  position: relative;
-}
-
-.navbar ul li a {
-  text-decoration: none;
-  color: rgb(12, 12, 12);
-  text-transform: uppercase;
-}
-
-.navbar ul li::after {
-  content: "";
-  height: 3px;
-  width: 0%;
-  background: #e6b5e5;
   position: absolute;
-  left: 0;
-  bottom: -10px;
-  transition: 0.5s;
-}
-
-.navbar ul li:hover::after {
-  width: 100%;
-}
-
-.content {
-  width: 100%;
-  position: absolute;
-  top: 10%;
-  transform: translate(-0%);
-  text-align: center;
-  color: #fff;
-}
-.content h1 {
-  font-size: 70px;
-  margin-top: 80px;
-}
-
-
-button {
+  left: 20px;
   width: 200px;
-  padding: 15px 0;
-  text-align: center;
-  margin: 20px 10px;
-  border-radius: 25px;
-  font-weight: bold;
-  border: 2px solid #c585bc;
-  background: transparent;
-  color: #fff;
+  height: 50px;
+  background: url(/img/온누리동물메디컬센터/onnuri_logo_retina.png) no-repeat
+    center 20px/200px;
   cursor: pointer;
-  position: relative;
-  overflow: hidden;
 }
 
-span {
-  background: #bbdd0e;
-  height: 100%;
-  width: 0%;
-  border-radius: 25px;
+nav {
   position: absolute;
-  left: 0;
-  bottom: 0;
-  z-index: -1;
-  transition: 0.3s;
+  margin: 0 auto;
+  background-color: white;
+  left: 500px;
+  white-space: nowrap; /* 줄바낌 방지 */
 }
 
-button:hover span {
-  width: 100%;
+nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: relative;
 }
 
-/* global */
-
-h1 {
-	text-align: center;
-}
-.form {
-	max-width: 768px;
-	display: block;
-	background: #f3bce3;
-	padding: 25px;
-	margin: 40px auto;
-	box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
-	color: rgb(255, 255, 255);
-}
-fieldset {
-	border: none;
-	margin: 10px auto;
-	legend {
-		margin: 30px 0 0;
-		font-size: 24px;
-		font-weight: 700;
-	}
-}
-.double-input {
-	margin: 20px auto;
-	& > div {
-		float: left;
-		width: 48%;
-		margin-bottom: 10px;
-		margin: 0 1% 10px;
-	}
-	&:after {
-		content: "";
-		display: table;
-		clear: both;
-	}
-}
-.form-input-container {
-	label {
-		display: block;
-		margin-bottom: 10px;
-	}
-	&.date-select select {
-		width: 47%;
-		&:first-of-type {
-			margin-right: 3%;
-		}
-	}
-	select {
-		width: 100%;
-		color: white;
-		background: transparent;
-		border: 1px solid #a9a9a9;
-		padding: 8px;
-		height: 35px;
-		&:focus {
-			border: 1px solid #2db92d;
-		}
-		option {
-			color: black;
-		}
-	}
-	input {
-		width: 100%;
-		color: white;
-		padding: 8px;
-		height: 35px;
-		background: transparent;
-		border: 1px solid #a9a9a9;
-		&:focus {
-			border: 1px solid #2db92d;
-		}
-	}
-
-  
-}
-button[type="submit"] {
-	height: 50px;
-	width: 300px;
-	background: #040ceb;
-	border: none;
-	cursor: pointer;
-	font-size: 20px;
-	line-height: 50px;
-	font-family: 'Lato';
-	box-shadow: 0px 0px 10px #131313;
-	display: block;
-	margin: 0 auto;
+nav ul li {
+  display: inline-block;
+  background-color: white;
 }
 
+nav a {
+  display: block;
+  padding: 0 10px;
+  color: gray;
+  font-size: 20px;
+  line-height: 60px;
+  text-decoration: none;
+}
 
-/* scroll */
+nav a:hover {
+  color: #000000;
+}
+
+/* Hide Dropdowns by Default */
+nav ul ul {
+  display: none;
+  position: absolute;
+  top: 60px; /* the height of the main nav */
+}
+
+/* Display Dropdowns on Hover */
+nav ul li:hover > ul {
+  display: inherit;
+}
+
+/* Fisrt Tier Dropdown */
+nav ul ul li {
+  width: 170px;
+  float: none;
+  display: list-item;
+  position: relative;
+}
+
+/* 가장 말단 요소 fixed만들기 */
+.btn {
+  position: fixed;
+  top: 40%;
+  right: -150px;
+  z-index: 99999;
+  width: 200px;
+  height: 200px;
+ 
+  border: 2px solid blue;
+  border-radius: 30px 0 0 30px;
+  /* 모서리 둥글게: 
+  왼쪽 위부터 시계방향셋팅 */
+  background: lightcyan url(./ab_img/ab0.jpg) no-repeat right/auto 100%;
+  /* 글자진행방향변경 */
+  writing-mode: vertical-lr;
+  /* 세로글자진행시 셋팅값
+  vertical-lr (영문자는 옆으로 회전된 상태로 나옴) */
+  padding-left: 20px;
+
+  /* 트랜지션: 속시이지 */
+  transition: right 0.3s;
+}
+/* 마우스 오버시 포스터나오기 */
+.btn:hover {
+  right: 0;
+}
+
