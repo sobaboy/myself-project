@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Mask Effect2</title>
+  <style>
+    html,body{
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+    #wrap{/*아래 깔리는 배경이미지를 가진 부모박스*/
+      position: relative;
+      width: 590px;
+      height: 500px;
+      background: url(images/Avatar.jpg) no-repeat;
+      margin: 0 auto;/*가로중앙*/
+    }
+    #mask{/*마스크 효과 box*/
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: url(images/man.jpg) no-repeat fixed center top;
+    }
+    #over{/*mosemove 이벤트가 적용되는 투명 box*/
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+/*
+      background-color: blue;
+      opacity: .5;
+*/
+    }
+  </style>
+  <script src="js/jquery-1.8.1.min.js"></script>
+  <script src="js/jquery-ui-1.10.4.min.js"></script>
+  <script>
+  $(function(){//// jQB //////////
+  // 마우스가 #over박스위에서 움직일때 마다 #mask이동하기
+    $("#over").mousemove(function(e){
+      var point = $("#mask").width()/2;//크기의절반
+      var posx = 
+          e.pageX - $(this).offset().left -point;
+      var posy = e.pageY - point;
+      //박스위에서의 위치 
+      // = 마우스포인터 x축위치값-박스left값
+      //console.log("x좌표: "+posx);
+      
+      /// #mask박스 left값 변경하기
+      $("#mask").css({
+        top:posy+"px",left:posx+"px"});
+      
+    });/////////////  mosemove ////////////
+    ///////////////////////////////////////
+    
+    
+
+    /// 처음에 원안보이게
+    $("#mask").hide();
+    /// 마우스 오버시에만 보이게하기
+    $("#over").hover(
+      function(){// over
+        $("#mask").show();
+      },
+      function(){// out
+        $("#mask").hide();
+      });///// hover /////
+    //////////////////////
+
+    
+    
+    
+  });////// jQB ////////////////////////////////
+  //////////////////////////////////////////////
+  
+  
+  </script>
+  
+</head>
+<body>
+  <div id="wrap">
+    <div id="mask"></div>
+    <div id="over"></div>
+  </div>
+
+
+
+ 
+ 
+ 
+ 
+ 
+  
+</body>
+</html>

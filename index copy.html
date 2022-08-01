@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="shortcut icon" href="https://img.vogue.co.kr/vogue/2020/05/style_5eb4f01cf3e0e.jpg" type="image/x-icon" />
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/media.css">
+  <style>
+    
+    /* @@@@@@@@@@@ 1. 상단영역 @@@@@@@@@@*/
+    /******************* 1. 상단영역 *******************/
+/* 겉박스 */
+#top{
+  position: relative;
+  /* 부모자격 */
+  z-index: 9999;
+  /* 하단박스보다 위로(GNB 메뉴때문에 설정) */
+  /* 하단 구분선 */
+  border-bottom: 1px solid #ccc;
+  /* 배경흰색 */
+  background-color: #fff;
+}
+
+
+/* 1-1.메인로고 */
+.logo{
+  padding: 20px;
+  text-align: center;
+}
+.logo img{
+  width: 100px;
+}
+
+
+
+/* 1-2.탑메뉴 */
+.tmenu{
+  position: relative;
+  /* 부모자격! 
+  상태는 로고박스와 GNB박스 사이에 있고
+  자식ul이 앱솔루트라서 높이값이 0임! 
+  가로는 자동으로 .inbox의 크기인 1200px을
+  채움!*/
+}
+/* 탑메뉴 ul */
+.tmenu>ul{
+  position: absolute;
+  top: -50px;
+  right: 0;
+  /* 부모는? .tmenu */
+}
+
+/* 탑메뉴 상위li */
+.tmenu>ul>li{
+  padding: 0 5px;
+}
+
+/* 탑메뉴 상위a요소 */
+.tmenu>ul>li>a{
+  /* 글자크기 (15px) */
+  font-size: 1.5rem;
+}
+
+
+/************ sns 메뉴 ************/
+.sns{
+  /* 마진탑으로 옆 메뉴글자와 줄맞춤 */
+  margin-top: -5px;
+}
+
+/* sns a요소 확장 */
+.sns a{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* sns 메뉴 li */
+.sns li{
+  width: 30px;
+  height: 30px;
+  /* 배경이미지로 sns아이콘 넣기 */
+  background: url(../images/icons.png) no-repeat;
+}
+/* 트위터 */
+.sns li:nth-child(1){
+  background-position: 0 0;
+}
+/* 트위터 오버시 */
+.sns li:nth-child(1):hover{
+  background-position: 0 -30px;
+}
+/* 인스타그램 */
+.sns li:nth-child(2){
+  background-position: -30px 0;
+}
+/* 인스타그램 오버시 */
+.sns li:nth-child(2):hover{
+  background-position: -30px -30px;
+}
+/* 페이스북 */
+.sns li:nth-child(3){
+  background-position: -60px 0;
+}
+/* 페이스북 오버시 */
+.sns li:nth-child(3):hover{
+  background-position: -60px -30px;
+}
+
+
+/************* 1-3. GNB메뉴 *************/
+/* .gnb{
+  width: 574px;
+  margin: 0 auto;
+} */
+/* 마영오! - 특정 가로크기가 있어야 적용됨! */
+
+/* GNB 상위li */
+.gnb>ul>li{
+  padding: 0 15px;
+}
+
+/* GNB 상위 a */
+.gnb>ul>li>a{
+  display: block;
+  /* 글자크기 (17px) */
+  font-size: 1.7rem;
+  /* 줄간격 (44px) */
+  line-height: 4.4rem;
+
+  /* 보더 때문에 크기가 변하지 않게
+  원본에 만들고 투명하게 색처리함! */
+  border-bottom: 4px solid transparent;
+}
+/* 상위메뉴 마우스 오버시 상위a에 하단보더 */
+.gnb>ul>li:hover>a{
+  /* 오버시엔 보더 색만 변경함! */
+  border-bottom-color: red;
+}
+/* 서브메뉴 */
+.smenu{
+  position: absolute;
+  z-index: 1;
+  /* li가상요소 after보다 위! */
+  /* background-color: #fff; */
+
+  /* 서브메뉴 숨기기 */
+  height: 0;
+  overflow: hidden;
+
+  /* 트랜지션: 속시이지 */
+  transition: height .4s ease-out;
+}
+/* 상위메뉴 li마우스 오버시 서브메뉴 보이기
++ 서브메뉴 가상요소 배경 보이기 */
+.gnb>ul>li:nth-child(1):hover .smenu,
+.gnb>ul>li:nth-child(1):hover::after{
+  height: 120px;
+}
+.gnb>ul>li:nth-child(3):hover .smenu,
+.gnb>ul>li:nth-child(3):hover::after{
+  height: 150px;
+}
+.gnb>ul>li:nth-child(4):hover .smenu,
+.gnb>ul>li:nth-child(4):hover::after{
+  height: 90px;
+}
+/* 서브메뉴 a */
+.smenu a{
+  display: block;
+  font-size: 1.4rem;
+  padding: 10px 0;
+}
+
+/* 서브메뉴 끝까지 차는 배경박스 
+가상요소로 만들기! -> .sm인li만 생성됨! */
+.gnb>ul>li.sm::after{
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  /* 가로크기를 %로 주면 
+  부모자격에 기준을 둔다!
+  -> 화면을 채워야 하므로 싸고있는
+  요소중에는 부모가 없어야한다!
+  그래야 화면이 부모가 된다! 
+  left를 줬으므로 보이는 화면기준!
+  top은 안줘서 젠틀함! a요소 아래위치!*/
+  height: 0;/* 200px-> 오버시 각 수치로! */
+  background-color: #fff;
+
+  /* #top박스 하단보더 보이게 하기위해
+  마진탑으로 1px이동(top을 쓰면 복잡해짐) */
+  margin-top: 1px;
+  
+  /* 트랜지션: 속시이지 */
+  transition: height .4s ease-out;
+}
+
+/* 상위li에 오버시 가상요소 하단 보더 공통생성 */
+.gnb>ul>li:hover::after{
+  border-bottom: 2px solid red;
+}
+
+
+
+/* 햄버거버튼 */
+.ham{
+  position: absolute;
+  top: 50%;
+  transform: 
+  translateY(-50%) scaleX(1.3);
+  right: 5vw;
+  border: none;
+  background-color: transparent;
+  font-size: 10vw;
+  padding: 0;
+  margin: 0;
+  color: #000;
+
+  /* 처음에 안보임 */
+  display: none;
+}
+/* 햄버거 가상요소 */
+.ham::before{
+  content: '≡';
+}
+/* GNB메뉴 보이는 상태일때 햄버거버튼 */
+body.on .top .ham{
+  transform: 
+  translateY(-50%) scale(1.2);
+  color: #fff;
+  z-index: 9999;
+}
+body.on .top .ham::before{
+  content: '×';
+}
+
+
+    /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+
+
+
+
+    /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+    /* 위로가기버튼 */
+
+    /************** 1-3. 네이버예약버튼 **************/
+    .btnTop {
+      background: url(../img/naverRsvn.png) no-repeat center/cover;
+      position: fixed;
+      z-index: 1;
+      bottom: 50px;
+      right: 50px;
+      /* 보이는 화면에 고정! */
+      width: 80px;
+      height: 80px;
+      /* button 요소는 기본 중앙정렬에 세로중앙도
+  적용되어 있음! */
+      background-color: rgb(255, 255, 255);
+      border-radius: 50%;
+      border: none;
+      /* border: 5px outset #fff; */
+      /* 오버시 MDN으로 보더 옵션 참조! 
+      w3c 참조:
+      https://www.w3schools.com/cssref/playdemo.asp?filename=playcss_border-style&preval=none
+  */
+    }
+
+    /* 위로가기 버튼 오버시 */
+    .btnTop:hover {
+      background-color: rgb(90, 225, 130);
+      /* border-style: inset; */
+    }
+
+    .btnTop:hover a {
+      color: red;
+    }
+
+    .btnTop a {
+      display: block;
+      /* 크기 디자인 적용위해 block! */
+      width: 100%;
+      height: 100%;
+      font: 30px/90px 'Black Ops One';
+      /* line-height가 90px인 이유:
+  버튼요소는 box-sizing:border-box 이므로
+  내부에 패딩과 보더크기를 포함함
+  따라서 보더크기인 5+5=10px을 빼야
+  컨텐츠 영역의 순수 높이가 된다! */
+      text-decoration: none;
+    }
+
+    /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+   /* 1.4. 모바일 검색박스 */
+.mos {
+  padding: 15px 30px;
+  background-color: #fff;
+  display: none; /* 처음에 숨기기 */
+}
+/* 검색속박스 */
+.mwrap {
+  position: relative;
+  /* 부모자격 */
+  width: 100%;
+  height: 35px;
+  background-color: #000;
+}
+/* 검색입력창 - 부모박스의 크기에 따라 유동적인 박스 */
+#search {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 50px;
+  bottom: 9px;
+}
+/* 입력양식 */
+#search input {
+  width: 100%;
+  height: 100%;
+  padding-left: 10px;
+}
+/* input박스는 일반 div박스와 다르기때문에 겉박스를 만들고
+채우기 형식으로 디자인함! */
+
+/* 검색버튼 */
+.scbtn {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+  font-size: 12px;
+  font-weight: bold;
+}
+    /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+    * 개별 배경이미지 */
+
+    /* 1번 - 1개 */
+    .bg1 {
+      background-image: url();
+    }
+
+    /* 2번 - 3개 */
+    .bg2 {
+      background-image: url();
+    }
+
+    .bg3 {
+      background-image: url();
+    }
+
+    .bg4 {
+      background-image: url();
+    }
+
+    /* 3번 - 1개 */
+    .bg5 {
+      background-image: url();
+    }
+
+    /* 4번 - 3개 */
+    .bg6 {
+      background-image: url();
+    }
+
+    .bg7 {
+      background-image: url();
+    }
+
+    .bg8 {
+      background-image: url();
+    }
+
+    /* 5번 - 1개 */
+    .bg9 {
+      background-image: url();
+    }
+
+    /* 6번 - 3개 */
+    .bg10 {
+      background-image: url();
+    }
+
+    .bg11 {
+      background-image: url();
+    }
+
+    .bg12 {
+      background-image: url();
+    }
+
+    /* 7번 - 3개 */
+    .bg13 {
+      background-image: url();
+    }
+
+    .bg14 {
+      background-image: url();
+    }
+
+    .bg15 {
+      background-image: url();
+    }
+
+    /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+    /************* 2. 공통 class *************/
+    /* 중앙 속박스 */
+    .ibx {
+      max-width: 70vw;
+      margin: 0 auto;
+    }
+
+
+    /* 한개짜리 파티션 박스의 높이값 100% */
+    .pt1 .cbx {
+      height: 100%;
+    }
+
+    /* 플렉스박스 클래스 */
+    .fbx {
+      display: flex;
+    }
+
+    .fbx .cbx {
+      flex: 1;
+      /* 동일비율 + 높이값 자동채움 */
+    }
+
+    /* 비율유지 박스 클래스 */
+    .rbx {
+      position: relative;
+      /* 비율유지 앱솔루트 속박스의 부모자격 */
+    }
+
+    /* 가상요소 비율밀기 */
+    .rbx::before {
+      content: '';
+      display: block;
+      /* 패딩탑 설정은 각 .pt1, .pt2에서 따로함! */
+    }
+
+    /* 컨텐츠박스 유형1 - 1개구성 비율밀기 */
+    .pt1.rbx::before {
+      padding-top: 55.69%;
+      /* 
+    비율계산
+    1300 : 724 = 100 : x
+    x = 724 * 100 / 1300
+    x = 55.69%
+  */
+    }
+
+    /* 컨텐츠박스 유형2 - 3개구성 비율밀기 */
+    .pt2.rbx::before {
+      padding-top: 50%;
+      /* 
+      비율계산
+      1300 : 650 = 100 : x
+      x = 650 * 100 / 1300
+      x = 50%
+    */
+    }
+
+    /* 비율유지 속박스
+- 가상요소 속박스가 패딩탑으로
+밀기때문에 내부 컨텐츠 영역을 잡는다! */
+    .rbxIn {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    /* 컨텐츠 박스 */
+    .cbx {
+      position: relative;
+      /* 부모자격 */
+    }
+
+    /* 가상요소로 반투명 검정배경 그라데이션 넣기 */
+    /* h2요소보다 먼저 그려져서 자연스럽게 아래오도록 ::before사용! */
+    .cbx::before {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      /* 그라데이션: 아래쪽에서 위쪽으로 검정색 투명으로 변화함 */
+      background-image: linear-gradient(to top, rgba(0, 0, 0, 0.878), rgba(0, 0, 0, 0));
+    }
+
+    /* 컨텐츠박스 가상요소로 보더애니 구현 */
+    .cbx::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      /* 나의 부모? .cbx */
+
+      /* 크기유지박스 - 보더포함 */
+      box-sizing: border-box;
+      /* 보더설정 */
+      border: 0px solid rgb(255, 255, 255);
+      /* 손가락모양 */
+      cursor: pointer;
+      /* 트랜지션: 속시이지 */
+      transition: border .1s ease-in;
+    }
+
+    /* .cbx에 마우스 오버시 보더애니 */
+    .cbx:hover::after {
+      border: min(5px, 1.6vw) solid rgb(34, 69, 165);
+      /* min()으로 최대 보더크기 제한 */
+    }
+
+    /* 컨텐츠 타이틀박스 */
+    .cbx h2 {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      /* 부모는? 싸고 있는 .cbx */
+
+      /* 글자설정 */
+      font-family: pist, nbg;
+      /* 웹폰트 영문체(Pistilli), 한글체(나눔바른고딕) */
+      font-size: min(33px, 3vw);
+      /* min()을 사용하여 작은크기선택으로
+  최대 글자크기를 제한함! */
+      font-weight: normal;
+      text-align: center;
+      color: #fff;
+
+      padding: min(50px, 3.4vw);
+      /* min()을 사용하여 작은크기선택으로
+  최대 패딩크기를 제한함! */
+
+      /* 박스크기유지 - 패딩포함 */
+      box-sizing: border-box;
+    }
+
+    /* 컨텐츠 타이틀 작은글자 */
+    .cbx h2 small {
+      font-size: 14px;
+    }
+
+
+    /* 배경이미지 공통 class */
+    .bgi {
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    /* IR(Image Replacement) 또는 일반숨김용 클래스 */
+    .ir {
+      display: block;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+    }
+
+    /* 공통 적용 배경색 클래스 */
+    .bgc {
+      background-color: #f9f9f9;
+    }
+
+    /* 등장액션 클래스 */
+    .scAct {
+      transform: translateY(40%);
+      opacity: 0;
+      transition: 1.2s cubic-bezier(0.56, 0.15, 0, 0.76);
+    }
+
+    .scAct.on {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+  </style>
+
+  <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+  <script>
+    var lang = {
+      //한국어
+      "ko": {
+        "메뉴": ["병원소개", "특화진료", "응급진료", "블로그치료케이스"],
+        "주소": "서울시 강남구 청담동 34-22 JJ빌딩 94호, 대표: 제임스 홍"
+      },
+      //영어
+      "en": {
+        "메뉴": ["1", "2", "3", "4"],
+        "주소": "94, JJ Building, 34-22, Cheongdam-dong, Gangnam-gu, Seoul, Representative: James Hong"
+      },
+      //일본어
+      "ja": {
+        "메뉴": ["ホーム", "男性用", "女性", "掲示板"],
+        "주소": "ソウル市江南区清潭洞34-22 JJビル94号、代表：ジェームズホン"
+      },
+      //중국어
+      "ch": {
+        "메뉴": ["家", "对于男人", "女用", "公告栏"],
+        "주소": "首尔特别市江南区清潭洞34-22 JJ大厦94"
+      },
+      //스페인어
+      "es": {
+        "메뉴": ["Casa", "Hombres", "Mujeres", "Anuncios"],
+        "주소": "94, JJ Building, 34-22, Cheongdam-dong, Gangnam-gu, Seúl, Representante: James Hong"
+      }
+    }; ///////// lang 객체 ///////
+
+    ////////////// 로드구역 ////////////////////////
+    window.addEventListener("load", () => {
+
+      console.log("로딩완료!");
+
+      // 대상선정
+      // (1) 이벤트 대상: .sel
+      const sel = document.querySelector(".sel");
+      // (2) 변경 대상: GNB메뉴 -> .gnb a
+      const menu = document.querySelectorAll(".gnb a");
+
+      // (3) 변경 대상: 메인 이미지 -> #cont img
+      const mimg = document.querySelector("#cont img");
+      // (4) 변경 대상: 하단 회사정보 -> #info address
+      const info = document.querySelector("#info address");
+
+      ////////////////////////////////////////////////
+      // 1. 선택박스 선택변경시 change이벤트에 따라 변경
+      // 이벤트 대상: .sel
+      // 이벤트 종류: change
+      // 변경대상: 메뉴, 메인이미지, 하단정보
+      /////////////////////////////////////////////////
+
+      sel.addEventListener("change", () => {
+        //이벤트 발생시 변경된 option 값 읽기
+        //화살표함수 this 는 event.currentTarget
+        let opt = event.currentTarget.value;
+        console.log("선택값:", opt);
+
+        // 2. 다국어 언어 셋팅
+        // 다국어 셋팅 객체인 lang의 속성명이 
+        // option 값과 같다!
+        let ov = lang[opt];
+        console.log("셋팅값:", ov);
+
+        // 3. 메뉴 변경하기
+        // 대상 : menu 변수
+        // forEach ((요소/배열값, 순번, 객체) => {} )
+
+        menu.forEach(
+          (ele, idx) =>
+          ele.innerText = ov["메뉴"][idx]);
+        // 4. 메인이미지 변경하기
+        // 대상: mimg 변수
+        // setAttribute(속성명, 값) -> 속성변경 JS 내장함수
+        mimg.setAttribute("src", `images/${opt}.jpg`);
+
+        // 5. 하단주소 변경
+        info.innerText = ov["주소"];
+      }); /////////// change////////////
+
+
+
+
+
+    }); ////////// 로드구역 ////////////////////////
+  </script>
+
+</head>
+
+<body>
+   <!-- 1. 상단영역 -->
+   <div id="top">
+    <header class="ibx top">
+          <!-- 1-1. 메인로고 -->
+          <h1 class="logo">
+            <a href="index.html">
+                <img src="images/tvnlogo2.png" alt="tvN로고">
+            </a>
+        </h1>
+        <!-- 1-2. 탑메뉴 -->
+        <aside class="tmenu">
+          <!-- 플렉스박스 -->
+          <ul class="fbx">
+              <li>
+                  <a href="#">로그인</a>
+              </li>
+              <li>
+                  <a href="#">회원가입</a>
+              </li>
+              <li>
+                  <!-- sns메뉴 -->
+                  <!-- 플렉스박스 -->
+                  <ol class="sns fbx">
+                      <li>
+                          <a href="#" title="트위터 바로가기">
+                              <span class="ir">
+                                  트위터 바로가기
+                              </span>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="#" title="인스타그램 바로가기">
+                              <span class="ir">
+                                  인스타그램 바로가기
+                              </span>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="#" title="페이스북 바로가기">
+                              <span class="ir">
+                                  페이스북 바로가기
+                              </span>
+                          </a>
+                      </li>
+                  </ol>
+              </li>
+          </ul>
+           <!-- 1-3. GNB메뉴 -->
+           <nav class="gnb">                
+            <!-- 플렉스박스+가로중앙 -->
+            <ul class="fbx jcc">
+                <li class="sm">
+                    <a href="#">프로그램 소개</a>
+                    <!-- 서브메뉴 -->
+                    <div class="smenu">
+                        <ol>
+                            <li>
+                                <a href="#">프로그램 소개</a>
+                            </li>
+                            <li>
+                                <a href="#">인물소개</a>
+                            </li>
+                            <li>
+                                <a href="#">인물관계도</a>
+                            </li>
+                        </ol>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">미리보기</a>
+                </li>
+                <li class="sm">
+                    <a href="#">동영상</a>
+                    <!-- 서브메뉴 -->
+                    <div class="smenu">
+                        <ol>
+                            <li>
+                                <a href="#">클립영상</a>
+                            </li>
+                            <li>
+                                <a href="#">다시보기</a>
+                            </li>
+                            <li>
+                                <a href="#">예고편</a>
+                            </li>
+                            <li>
+                                <a href="#">스페셜</a>
+                            </li>
+                        </ol>
+                    </div>
+                </li>
+                <li class="sm">
+                    <a href="#">사진첩</a>
+                    <!-- 서브메뉴 -->
+                    <div class="smenu">
+                        <ol>
+                            <li>
+                                <a href="#">현장 포토</a>
+                            </li>
+                            <li>
+                                <a href="#">대표 포스터</a>
+                            </li>
+                        </ol>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">OST</a>
+                </li>
+                <li>
+                    <a href="#">시청자 게시판</a>
+                </li>
+            </ul>
+        </nav>
+         <!-- 햄버거버튼 -->
+         <button class="ham" onclick="document.body.classList.toggle('on')"></button>
+
+
+      </aside>
+
+  <section class="pt2 rbx">
+    <div class="rbxIn fbx">
+      <div class="cbx bgi bg2">
+        <h2>컨텐츠2</h2>
+      </div>
+      <div class="cbx bgi bg3">
+        <h2>컨텐츠2</h2>
+      </div>
+      <div class="cbx bgi bg4">
+        <h2>컨텐츠2</h2>
+      </div>
+      <div class="cbx bgi bg4">
+        <h2>컨텐츠2</h2>
+      </div>
+    </div>
+  </section>
+  <section class="pt1 rbx">
+    <div class="rbxIn">
+      <div class="cbx bgi bg5">
+        <h2>컨텐츠</h2>
+        <!-- 태그문자는 특수문자처리함!
+                       <여는꺽쇠 &lt; / >닫는꺽쇠 &gt; -->
+      </div>
+    </div>
+  </section>
+  <section class="pt2 rbx">
+    <div class="rbxIn fbx">
+      <div class="cbx bgi bg6">
+        <h2>컨텐츠</h2>
+      </div>
+      <div class="cbx bgi bg7">
+        <h2>컨텐츠</h2>
+      </div>
+      <div class="cbx bgi bg8">
+        <h2>컨텐츠</h2>
+      </div>
+    </div>
+  </section>
+  <section class="pt1 rbx">
+    <div class="rbxIn">
+      <div class="cbx bgi bg9">
+        <h2>컨텐츠</h2>
+      </div>
+    </div>
+  </section>
+  <section class="pt2 rbx">
+    <div class="rbxIn fbx">
+      <div class="cbx bgi bg10">
+        <h2>컨텐츠</h2>
+      </div>
+      <div class="cbx bgi bg11">
+        <h2>컨텐츠</h2>
+      </div>
+      <div class="cbx bgi bg12">
+        <h2>컨텐츠</h2>
+      </div>
+    </div>
+  </section>
+  <section class="pt2 rbx">
+    <div class="rbxIn fbx">
+      <div class="cbx bgi bg13">
+        <h2>컨텐츠</h2>
+      </div>
+      <div class="cbx bgi bg14">
+        <h2>컨텐츠</h2>
+      </div>
+      <div class="cbx bgi bg15">
+        <h2>컨텐츠</h2>
+      </div>
+    </div>
+  </section>
+  </main>
+  </div>
+  </header>
+</body>
+
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>온누리동물메디컬센터</title>
+  <style>
+    /* 초기화 */
+    html,
+    body,
+    ul,
+    ol {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ul,ol초기화 */
+    ul,
+    ol {
+      list-style: none;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    /* GNB메뉴박스 */
+    .gnb {
+      position: relative;
+      z-index: 999;
+      background-color: rgb(255, 255, 255);
+      transition: .3s;
+    }
+
+    .gnb:hover {
+      background-color: darkblue;
+    }
+
+    /* GNB 오버시 나올 전체 배경 가상요소  */
+    .gnb::after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 0;
+      background-color: darkblue;
+
+      /* 트랜지션 */
+      transition: 0.4s;
+    }
+
+    /* GNB오버시 가상요소 보이기 */
+    .gnb:hover::after {
+      height: 300px;
+    }
+
+
+    /* ul 초기화 */
+    .gnb ul {
+      display: flex;
+      width: 800px;
+      margin: 0 auto;
+      /* outline: 1px solid red; */
+    }
+
+    /* 상위li 리스트요소 */
+    .gnb>ul>li {
+      width: 200px;
+      height: 40px;
+      text-align: center;
+    }
+
+    /* li사이에 구분선 넣기 */
+    .gnb>ul>li+li::before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 1px;
+      height: 20px;
+      margin-top: 10px;
+      margin-left: 1px;
+      background-color: blue;
+
+    }
+
+    /* li 상위메뉴 a요소 */
+    .gnb>ul>li>a {
+      /* a요소 확장 */
+      display: block;
+      width: 100%;
+      height: 100%;
+
+      font-size: 17px;
+      line-height: 40px;
+      color: #000;
+      text-decoration: none;
+      transition: .3s;
+    }
+
+    /* 부모li에 마우스 오버시 상위메뉴 a요소 변경 */
+    .gnb:hover>ul>li>a {
+      color: lightskyblue;
+    }
+
+    /* 상단 메뉴 글자에 밑줄애니 */
+    .gnb>ul>li>a>span {
+      position: relative;
+    }
+
+    /* 가상요소로 밑줄넣기 */
+    .gnb>ul>li>a>span::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #fff;
+      transition: width .2s ease-out;
+    }
+
+    /* 상위메뉴 오버시 가상요소 밑줄애니 */
+    .gnb>ul>li:hover>a>span::after {
+      width: 100%;
+      transition-delay: .4s;
+    }
+
+    /* 
+        [ 부모요소로 부터 상속되는 속성은 무엇인가? ]
+        글자체, 글자색, 글자크기, 글자정렬 등 글자관련속성들
+      */
+
+    /* 서브메뉴 */
+    .smenu {
+      position: absolute;
+      z-index: 1;
+      width: 160px;
+      height: 0;
+      overflow: hidden;
+      background-color: darkblue;
+      border-radius: 0 0 5px 5px;
+
+      /* 트랜지션 */
+      transition: .4s;
+    }
+
+    /* 상위메뉴 li 오버시 서브메뉴 보이기 */
+    .gnb:hover>ul>li .smenu {
+      height: 170px;
+    }
+
+    /* 서브메뉴 ol */
+    .smenu ol {
+      padding: 15px;
+      /* outline: 1px dashed red; */
+    }
+
+    /* 서브메뉴 li */
+    /* .smenu li{
+        outline: 1px dotted blue;
+      } */
+
+    .smenu a {
+      /* a확장 */
+      display: block;
+      width: 100%;
+      height: 100%;
+      font-size: 14px;
+      color: lightskyblue;
+      text-decoration: none;
+      line-height: 35px;
+      /* 트랜지션 */
+      transition: .2s;
+    }
+
+    /* 서브메뉴 오버시 */
+    .smenu a:hover {
+      background-color: lightskyblue;
+      color: darkblue;
+    }
+
+
+    /* 본문내용 */
+    .cont {
+      position: relative;
+      background-color: #fdfccf;
+      text-align: center;
+      line-height: 50;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- GNB 네비게이션 -->
+  <nav class="gnb">
+    <ul>
+      <li>
+        <!-- 메뉴1 -->
+        <a href="#"><span>병원소개</span></a>
+        <!-- 서브메뉴 -->
+        <div class="smenu">
+          <ol>
+            <li>
+              <a href="#">인사말</a>
+            </li>
+            <li>
+              <a href="#">의료진소개</a>
+            </li>
+            <li>
+              <a href="#">의료장비소개</a>
+            </li>
+            <li>
+              <a href="#">병원둘러보기</a>
+            </li>
+            <li>
+              <a href="#">찾아오시는 길</a>
+            </li>
+          </ol>
+        </div>
+      </li>
+      <li>
+        <!-- 메뉴2 -->
+        <a href="#"><span>특화진료</span></a>
+        <!-- 서브메뉴 -->
+        <div class="smenu">
+          <ol>
+            <li>
+              <a href="#">영상센터</a>
+            </li>
+            <li>
+              <a href="#">종양센터</a>
+            </li>
+            <li>
+              <a href="#">심장센터</a>
+            </li>
+            <li>
+              <a href="#">간담도계 센터</a>
+            </li>
+          </ol>
+        </div>
+      </li>
+      <li>
+        <!-- 메뉴3 -->
+        <a href="#"><span>응급진료</span></a>
+        <!-- 서브메뉴 -->
+        <div class="smenu">
+          <ol>
+            <li>
+              <a href="#">24시응급진료안내</a>
+            </li>
+            <li>
+              <a href="#">우리들 의료시스템 특징</a>
+            </li>
+            <li>
+              <a href="#">의료장비소개</a>
+            </li>
+            <li>
+              <a href="#">병원둘러보기</a>
+            </li>
+            <li>
+              <a href="#">찾아오시는 길</a>
+            </li>
+          </ol>
+        </div>
+      </li>
+      <li>
+        <!-- 메뉴4 -->
+        <a href="#"><span>블로그치료케이스</span></a>
+        <!-- 서브메뉴 -->
+        <div class="smenu">
+          <ol>
+            <li>
+              <a href="#">치료케이스</a>
+            </li>
+          </ol>
+        </div>
+      </li>
+      <li>
+        <!-- 메뉴5 -->
+        <a href="#"><span>커뮤니티</span></a>
+        <!-- 서브메뉴 -->
+        <div class="smenu">
+          <ol>
+            <li>
+              <a href="#">공지사항</a>
+            </li>
+            <li>
+              <a href="#">자주하는 질문답변</a>
+            </li>
+            <li>
+              <a href="#">방송출연</a>
+            </li>
+          </ol>
+        </div>
+      </li>
+
+    </ul>
+  </nav>
+
+  <!-- 내용박스 -->
+  <div class="cont">본문내용</div>
+</body>
+
+</html>

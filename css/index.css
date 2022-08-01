@@ -10,25 +10,281 @@ body * {
   /* outline: 2px dashed lime; */
 }
 
+
 /* 초기화 */
 html,
 body,
-h1,
-h2,
-h3,
 ul,
 ol {
   margin: 0;
   padding: 0;
 }
 
+/* ul,ol초기화 */
+ul,
+ol {
+  /* 리스트박스 기본3無
+        - 마진0, 패딩0, 리스트스타일없음 */
+  list-style: none;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* GNB메뉴박스 */
+.gnb {
+  position: relative;
+  z-index: 999;
+  /* 포지션이 있어야 z-index적용됨!
+    GNB 하위메뉴가 위에 오도록 z-index를 높인다! */
+  background-color: rgb(255, 255, 255);
+}
+
+/* ul 초기화 */
+.gnb ul {
+  display: flex;
+    width: 800px;
+  height: 100px;
+  margin: 0 auto;
+  /* outline: 1px solid red; */
+}
+
+
+/* 상위li 리스트요소 */
+.gnb>ul>li {
+  width: 200px;
+  /* height: 40px; */
+  text-align: center;
+}
+
+/* 상위 li에 마우스 오버시 나타날 서브메뉴 배경
+  가상요소로 만들기!!! 서브메뉴있는 li만(li.sm) */
+.gnb>ul>li.sm::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  /* left,top의 부모는? .gnb */
+  height: 0;
+  /* 65px -> 오버시 */
+  background-color: rgb(255, 255, 255);
+
+  /* 트랜지션 */
+  transition: 0.4s;
+}
+
+/* 상위 li에 마우스 오버시 
+  서브메뉴 배경 가상요소 보이기 */
+.gnb>ul>li:hover::after {
+  height: 200px;
+}
+
+/* li사이에 구분선 넣기 */
+.gnb>ul>li+li::before {
+  content: "";
+  display: block;
+  position: absolute;
+  /* 젠틀앱솔루트:
+    부모박스안에 그대로있음! */
+  width: 1px;
+  height: 20px;
+  margin-top: 10px;
+  margin-left: 1px;
+  background-color: blue;
+
+  /* border-left: 1px solid #000; */
+}
+
+/* li 상위메뉴 a요소 */
+.gnb>ul>li>a {
+  /* a요소 확장 */
+  display: flex;
+  
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  font-size: 17px;
+  line-height: 90px;
+  color: #000;
+  text-decoration: none;
+  /* 트랜지션:속시이지 */
+  transition: 0.3s;
+}
+
+/* 부모li에 마우스 오버시 상위메뉴 a요소 변경 */
+.gnb>ul>li:hover>a {
+  color: lightskyblue;
+  background-color: darkblue;
+}
+
+/* 상단 메뉴 글자에 밑줄애니 */
+.gnb>ul>li>a>span {
+  position: relative;
+  /* 부모자격 */
+}
+
+/* 가상요소로 밑줄넣기 */
+.gnb>ul>li>a>span::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  /* 부모는? 싸고있는 span */
+  width: 0;
+  /* 마우스오버시 100% */
+  height: 2px;
+  background-color: #fff;
+  /* 트랜지션: 속시이지 - 돌아올때 지연시간 없음! */
+  transition: width 0.2s ease-out;
+}
+
+/* 상위메뉴 오버시 가상요소 밑줄애니 */
+.gnb>ul>li:hover>a>span::after {
+  width: 100%;
+  /* 오버시에 기다리는 시간 0.4초 */
+  transition-delay: 0.4s;
+}
+
+/* 
+    [ 부모요소로 부터 상속되는 속성은 무엇인가? ]
+    글자체, 글자색, 글자크기, 글자정렬 등 글자관련속성들
+  */
+
+/* 서브메뉴 */
+.smenu {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  /* 가로중앙이동 */
+  z-index: 1;
+  /* li가상요소 앱솔루트 보다 위! */
+
+  /* 크기유지박스 왼쪽 패딩적용 */
+  width: 800px;
+  box-sizing: border-box;
+  padding-left: 80px;
+  /* outline: 1px dotted lime; */
+
+  /* 플렉스박스 */
+  display: flex;
+
+  /* width: 200px; 
+    -> 가로크기없이 auto 여야 옆으로 늘어남! */
+  /* 서브메뉴 박스 숨기기 */
+  height: 0;
+  /* 1 */
+  overflow: hidden;
+  /* 2 */
+  /* 주의사항: 높이값 0으로
+    숨기는 박스는 위아래 패딩,보더는
+    숨겨지지 않으므로 쓰지 않는다!
+    디자인은 하위요소에서 할것! */
+
+  background-color: darkblue;
+  border-radius: 0 0 5px 5px;
+  color: lightskyblue;
+  text-align: center;
+
+  /* 트랜지션 */
+  transition: 0.4s;
+}
+
+/* 두번째 li의 .smenu 배경 이미지 */
+.gnb>ul>li:nth-child(2) .smenu{
+  background: url(./images/bgi001.jpg) no-repeat right 10px/auto 180px;
+}
+/* 세번째 li의 .smenu 배경 이미지 */
+.gnb>ul>li:nth-child(3) .smenu{
+  background: url(./images/bgi002.jpg) no-repeat right 10px/auto 180px;
+}
+
+
+/* 상위메뉴 li 오버시 서브메뉴 보이기 */
+.gnb>ul>li:hover .smenu {
+  height: 200px;
+}
+
+/* 서브메뉴 ol */
+.smenu ol {
+  /* 플렉스박스 */
+  display: flex;
+  padding: 15px;
+  /* outline: 1px dashed red; */
+}
+
+/* 서브메뉴 li */
+.smenu li {
+  margin-right: 20px;
+}
+
+.smenu a {
+  /* a확장 */
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  font-size: 14px;
+  color: lightskyblue;
+  text-decoration: none;
+  line-height: 35px;
+
+  padding: 0 5px;
+
+  /* 트랜지션 */
+  transition: 0.2s;
+}
+
+/* 서브메뉴 dd하위 a에 오버시 */
+.smenu dd a:hover {
+  background-color: lightskyblue;
+  color: darkblue;
+}
+
+/* 서브메뉴 하위 디자인 */
+.smenu dl{
+  width: 120px;
+  margin-left: 30px;
+}
+.smenu dt{
+  border-bottom: 1px solid lightskyblue;
+  margin-bottom: 5px;
+}
+.smenu dt a{
+  font-size: 18px;
+  font-weight: bold;
+}
+.smenu dd{
+  margin: 0;
+}
+
+/***************************************************************
+본문내용 
+*******************************************************************/
+.cont {
+  position: relative;
+  /* 하위 박스가 포지션이 있으면 나중에 그린박스가
+    윗박스보다 위에 올라온다! 따라서 메뉴박스가 위에 오도록
+    z-index를 상위박스에서 높여줘야 하위메뉴가 밑에 깔리지 않는다! */
+  background-color: #fdfccf;
+  text-align: center;
+  line-height: 50;
+}
+
+
+
+
+
 body {
   /* height: 3000px; */
 
   /* 배경: 색이반고윙/크 */
   width: 100%;
-  height: 300vh;
-  background: url(../img/puppy_bg.jpg) no-repeat fixed top/cover;
+  height: 100vh;
+  background: url() no-repeat fixed top/cover;
 }
 
 /* 1. 상단메뉴 */
@@ -42,65 +298,13 @@ body {
 
 .logo {
   position: absolute;
+  top: 10px;
   left: 20px;
   width: 200px;
   height: 50px;
   background: url(/img/온누리동물메디컬센터/onnuri_logo_retina.png) no-repeat
     center 20px/200px;
   cursor: pointer;
-}
-
-nav {
-  position: absolute;
-  margin: 0 auto;
-  background-color: white;
-  left: 500px;
-  white-space: nowrap; /* 줄바낌 방지 */
-}
-
-nav ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  position: relative;
-}
-
-nav ul li {
-  display: inline-block;
-  background-color: white;
-}
-
-nav a {
-  display: block;
-  padding: 0 10px;
-  color: gray;
-  font-size: 20px;
-  line-height: 60px;
-  text-decoration: none;
-}
-
-nav a:hover {
-  color: #000000;
-}
-
-/* Hide Dropdowns by Default */
-nav ul ul {
-  display: none;
-  position: absolute;
-  top: 60px; /* the height of the main nav */
-}
-
-/* Display Dropdowns on Hover */
-nav ul li:hover > ul {
-  display: inherit;
-}
-
-/* Fisrt Tier Dropdown */
-nav ul ul li {
-  width: 170px;
-  float: none;
-  display: list-item;
-  position: relative;
 }
 
 /* 가장 말단 요소 fixed만들기 */
@@ -131,3 +335,236 @@ nav ul ul li {
   right: 0;
 }
 
+
+
+/* booking */
+/* .section {
+  position: relative;
+  height: 100vh
+}
+
+.section .section-center {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%)
+}
+
+#booking {
+  font-family: 'Raleway', sans-serif
+}
+
+.booking-form {
+  position: relative;
+  max-width: 642px;
+  width: 100%;
+  margin: auto;
+  padding: 40px;
+  overflow: hidden;
+  background-image: url('https://i.imgur.com/8z1tx3u.jpg');
+  background-size: cover;
+  border-radius: 5px;
+  z-index: 20
+}
+
+.booking-form::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: -1
+}
+
+.booking-form .form-header {
+  text-align: center;
+  position: relative;
+  margin-bottom: 30px
+}
+
+.booking-form .form-header h1 {
+  font-weight: 700;
+  text-transform: capitalize;
+  font-size: 42px;
+  margin: 0px;
+  color: #fff
+}
+
+.booking-form .form-group {
+  position: relative;
+  margin-bottom: 30px
+}
+
+.booking-form .form-control {
+  background-color: rgba(255, 255, 255, 0.2);
+  height: 60px;
+  padding: 0px 25px;
+  border: none;
+  border-radius: 40px;
+  color: #fff;
+  -webkit-box-shadow: 0px 0px 0px 2px transparent;
+  box-shadow: 0px 0px 0px 2px transparent;
+  -webkit-transition: 0.2s;
+  transition: 0.2s
+}
+
+.booking-form .form-control::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.5)
+}
+
+.booking-form .form-control:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.5)
+}
+
+.booking-form .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5)
+}
+
+.booking-form .form-control:focus {
+  -webkit-box-shadow: 0px 0px 0px 2px #ff8846;
+  box-shadow: 0px 0px 0px 2px #ff8846
+}
+
+.booking-form input[type="date"].form-control {
+  padding-top: 16px
+}
+
+.booking-form input[type="date"].form-control:invalid {
+  color: rgba(255, 255, 255, 0.5)
+}
+
+.booking-form input[type="date"].form-control+.form-label {
+  opacity: 1;
+  top: 10px
+}
+
+.booking-form select.form-control {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none
+}
+
+.booking-form select.form-control:invalid {
+  color: rgba(255, 255, 255, 0.5)
+}
+
+.booking-form select.form-control+.select-arrow {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 32px;
+  line-height: 32px;
+  height: 32px;
+  text-align: center;
+  pointer-events: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px
+}
+
+.booking-form select.form-control+.select-arrow:after {
+  content: '\279C';
+  display: block;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg)
+}
+
+.booking-form select.form-control option {
+  color: #000
+}
+
+.booking-form .form-label {
+  position: absolute;
+  top: -10px;
+  left: 25px;
+  opacity: 0;
+  color: #ff8846;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  height: 15px;
+  line-height: 15px;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all
+}
+
+.booking-form .form-group.input-not-empty .form-control {
+  padding-top: 16px
+}
+
+.booking-form .form-group.input-not-empty .form-label {
+  opacity: 1;
+  top: 10px
+}
+
+.booking-form .submit-btn {
+  color: #fff;
+  background-color: #e35e0a;
+  font-weight: 700;
+  height: 60px;
+  padding: 10px 30px;
+  width: 100%;
+  border-radius: 40px;
+  border: none;
+  text-transform: uppercase;
+  font-size: 16px;
+  letter-spacing: 1.3px;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all
+}
+
+.booking-form .submit-btn:hover,
+.booking-form .submit-btn:focus {
+  opacity: 0.9
+} */
+
+
+/* 위로가기버튼 */
+
+/************** 1-3. 위로가기버튼 **************/
+.btnTop{
+  background: url(../img/naverRsvn.png) no-repeat center/cover;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  /* 보이는 화면에 고정! */
+  width: 100px;
+  height: 100px;
+  /* button 요소는 기본 중앙정렬에 세로중앙도
+  적용되어 있음! */
+  background-color: #ccc;
+  border-radius: 50%;
+  border: 5px outset #fff;
+  /* 오버시 MDN으로 보더 옵션 참조! 
+      w3c 참조:
+      https://www.w3schools.com/cssref/playdemo.asp?filename=playcss_border-style&preval=none
+  */
+}
+/* 위로가기 버튼 오버시 */
+.btnTop:hover{
+  background-color: #ff0;
+  border-style: inset;
+}
+.btnTop:hover a{
+  color: red;
+}
+.btnTop a{
+  display: block;
+  /* 크기 디자인 적용위해 block! */
+  width: 100%;
+  height: 100%;
+  color: blue;
+  font: 30px/90px 'Black Ops One';
+  /* line-height가 90px인 이유:
+  버튼요소는 box-sizing:border-box 이므로
+  내부에 패딩과 보더크기를 포함함
+  따라서 보더크기인 5+5=10px을 빼야
+  컨텐츠 영역의 순수 높이가 된다! */
+  text-decoration: none;
+}
