@@ -21,12 +21,12 @@ $(function () { /// jQB //////////////////
     setTimeout(function () {
         $(".wrap>ul>li").css({
             flex: "1",
-            transition: "all 1.2s ease-in-out"
+            transition: "all .2s ease-in-out"
         }); ////// css ///////////////////
     }, 1000); /// setTimeout /////////////
     
     // 3. 인트로 등장 총 시간 후 커버 없애기, 초기화하기
-    // 총시간: 1000+1200=2200 (2.2초)
+    // 총시간: 1000+200=1200 (1.2초)
     setTimeout(function(){
         
         // 1.커버없애기
@@ -39,7 +39,7 @@ $(function () { /// jQB //////////////////
         $(".wrap>ul>li").attr("style","");
         
         
-    },2200); /// setTimeout ///////////////
+    },1200); /// setTimeout ///////////////
 
 
 
@@ -53,11 +53,11 @@ $(function () { /// jQB //////////////////
         // 메뉴 들어오기
         $(".gnb").animate({
             left: "0"
-        }, 500, "easeInOutCubic");
+        }, 100, "easeOutCubic");
 
         // 컨텐츠박스+상단박스(.stg) 오른쪽이동하기!
         $(".stg").animate({
-            left: "300px"
+            left: "500px"
         }, 500, "easeInOutCubic");
 
         // 메뉴 리스트 순서대로 들어오기

@@ -1,6 +1,7 @@
 @charset "utf-8";
 /* 도깨비 PJ 시청자게시판 - board.css */
-
+@import url(reset.css);
+@import url(core.css);
 /* 컨텐츠 영역 속박스 */
 .cont{
     min-height: 600px;
