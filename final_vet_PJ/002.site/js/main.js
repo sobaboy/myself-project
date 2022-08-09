@@ -52,12 +52,15 @@ $(function () { /// jQB //////////////////
 
         // 메뉴 들어오기
         $(".gnb").animate({
+            left: "30%"
+        }, 100, "easeOutCubic");
+        $(".gnb2").animate({
             left: "0"
         }, 100, "easeOutCubic");
 
         // 컨텐츠박스+상단박스(.stg) 오른쪽이동하기!
         $(".stg").animate({
-            left: "500px"
+            left: "300px"
         }, 500, "easeInOutCubic");
 
         // 메뉴 리스트 순서대로 들어오기
@@ -146,8 +149,8 @@ $(function () { /// jQB //////////////////
             .click(function () {
 
                 // 1.GNB메뉴 원상복귀(복귀후 하위 li들 복귀)
-                $(".gnb").animate({
-                    left: "-300px"
+                $(".gnb,.gnb2").animate({
+                    left: "-1000px"
                 }, 500, "easeInOutCubic", function () {
 
                     // 초기화방법 중 style시트 인라인코드 지우기!
@@ -176,7 +179,6 @@ $(function () { /// jQB //////////////////
 
 
     }); /////// 햄버거 버튼 click /////////////////
-
 
 
 }); ////////// jQB //////////////////////
